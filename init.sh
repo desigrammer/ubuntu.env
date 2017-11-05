@@ -4,9 +4,39 @@ set -e
 read -sp "password: " password
 echo "$password" | sudo -S true
 
+sudo apt update
+
 # git
 if ! type git > /dev/null 2>&1 ; then
     sudo -S apt install -y git
+fi
+
+# vim-gnome
+if ! type vim > /dev/null 2>&1 ; then
+    sudo -S apt install -y vim-gnome
+fi
+
+# emacs
+if ! type emacs > /dev/null 2>&1 ; then
+    sudo -S apt install -y emacs24-nox emacs24-el emacs-mozc
+fi
+
+# chrome
+if ! type google-chrome > /dev/null 2>&1 ; then
+    sudo -S apt install -y libappindicator1
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo apt install -f
+    sudo dpkg -i google-chrome*.deb
+fi
+
+# unity-tweak-tool
+if ! type unity-tweak-tool > /dev/null 2>&1 ; then
+    sudo -S apt install -y unity-tweak-tool
+fi
+
+# ccsm
+if ! type ccsm > /dev/null 2>&1 ; then
+    sudo -S apt install -y compizconfig-settings-manager compiz-plugins-extra
 fi
 
 # curl
@@ -28,11 +58,4 @@ fi
 # pm2
 if ! type pm2 > /dev/null 2>&1 ; then
     sudo npm install -g pm2
-fi
-
-# tex
-if ! type platex > /dev/null 2>&1 ; then
-    sudo apt-add-repository ppa:texlive-backports/ppa
-    sudo add ppa:texlive-backports/ppa
-    sudo apt install -y software-properties-common texlive-lang-cjk texlive-latex-extra
 fi
