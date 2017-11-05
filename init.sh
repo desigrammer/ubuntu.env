@@ -4,6 +4,10 @@ set -e
 read -sp "password: " password
 echo "$password" | sudo -S true
 
+cp ./.vimrc ~/.vimrc
+cp ./.gvimrc ~/.gvimrc
+cp ./.bashrc ~/.bashrc
+
 sudo apt update
 
 # git
