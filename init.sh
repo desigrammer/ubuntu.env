@@ -48,6 +48,16 @@ if ! type curl > /dev/null 2>&1 ; then
     sudo -S apt install -y curl
 fi
 
+# gimp
+if ! type gimp > /dev/null 2>&1 ; then
+    sudo -S apt install -y gimp
+fi
+
+# inkscape
+if ! type inkscape > /dev/null 2>&1 ; then
+    sudo -S apt install -y inkscape
+fi
+
 # nginx
 if ! type nginx > /dev/null 2>&1 ; then
     sudo -S apt install -y nginx
